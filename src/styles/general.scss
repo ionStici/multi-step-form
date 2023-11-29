@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/assets/fonts/Ubuntu-Regular.ttf") format("truetype"),
+    url("/assets/fonts/Ubuntu-Medium.ttf") format("truetype"),
+    url("/assets/fonts/Ubuntu-Bold.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+}
+
+main {
+}
+
+input,
+button {
+  font-family: inherit;
+}
