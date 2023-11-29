@@ -1,15 +1,20 @@
+import styles from "./../styles/Steps.module.scss";
 import { assets } from "../store/Assets";
 
 function Steps({ step }) {
-  console.log(assets);
+  console.log(assets.bgSidebarMobile);
+  console.log(assets.bgSidebarDesktop);
 
   return (
-    <div>
+    <div
+      className={styles.wrapper}
+      style={{ backgroundImage: `url(${assets.bgSidebarMobile})` }}
+    >
       <ul>
-        <ul>1</ul>
-        <ul>2</ul>
-        <ul>3</ul>
-        <ul>4</ul>
+        <li className={step === 1 ? styles.active : ""}>1</li>
+        <li className={step === 2 ? styles.active : ""}>2</li>
+        <li className={step === 3 ? styles.active : ""}>3</li>
+        <li className={step === 4 ? styles.active : ""}>4</li>
       </ul>
     </div>
   );

@@ -1,0 +1,39 @@
+.wrapper {
+  width: 100%;
+  height: 172px;
+  padding-top: 32px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    column-gap: 16px;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    color: hsla(0, 0%, 100%, 1);
+    border: 1px solid hsla(0, 0%, 100%, 1);
+    transition: all 0.2s;
+  }
+
+  li.active {
+    color: hsla(213, 96%, 18%, 1);
+    border: 1px solid hsla(206, 94%, 87%, 1);
+    background-color: hsla(206, 94%, 87%, 1);
+  }
+}
