@@ -1,5 +1,9 @@
 function Layout({ children }) {
-  return <main>{children}</main>;
+  return (
+    <main>
+      <div className="wrapper">{children}</div>
+    </main>
+  );
 }
 
 export default Layout;
