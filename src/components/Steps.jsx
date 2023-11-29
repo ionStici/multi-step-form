@@ -2,8 +2,8 @@ import styles from "./../styles/Steps.module.scss";
 import { assets } from "../store/Assets";
 
 function Steps({ step }) {
-  console.log(assets.bgSidebarMobile);
-  console.log(assets.bgSidebarDesktop);
+  //   console.log(assets.bgSidebarMobile);
+  //   console.log(assets.bgSidebarDesktop);
 
   return (
     <div

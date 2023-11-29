@@ -3,24 +3,64 @@
   height: 72px;
   background-color: hsla(0, 0%, 100%, 1);
   box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
+  padding: 0 16px;
 
   position: fixed;
   z-index: 10;
   left: 0;
   bottom: 0;
 
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
+  div {
+    display: flex;
+    align-items: center;
+
+    max-width: 500px;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+.btn {
+  font-size: 14px;
+  font-weight: 500;
+
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 .back {
+  color: hsla(231, 11%, 63%, 1);
+  background-color: transparent;
+
+  &:hover {
+    color: hsla(213, 96%, 18%, 1);
+  }
 }
 
 .next {
+  color: hsla(0, 0%, 100%, 1);
+  background-color: hsla(213, 96%, 18%, 1);
   margin-left: auto;
+
+  &:hover {
+    background-color: hsla(213, 72%, 31%, 1);
+  }
 }
 
 .confirm {
+  color: hsla(0, 0%, 100%, 1);
+  background-color: hsla(243, 100%, 62%, 1);
   margin-left: auto;
+
+  &:hover {
+    background-color: hsla(243, 100%, 77%, 1);
+  }
 }
