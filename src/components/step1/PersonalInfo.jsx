@@ -1,8 +1,9 @@
 import styles from "./../../styles/PersonalInfo.module.scss";
-import { useState, useRef } from "react";
 import InputBox from "./InputBox";
+import { useState, useRef } from "react";
+import { useImperativeHandle, forwardRef } from "react";
 
-function PersonalInfo() {
+const PersonalInfo = forwardRef((props, ref) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
@@ -14,9 +15,73 @@ function PersonalInfo() {
   const emptyField = "This field is required";
   const wrongFormat = "Wrong format";
 
-  function handleValidation() {
-    return;
+  function validate(clear) {
+    const { current: nameErrEl } = nameErr;
+    const nameInput = nameErrEl.closest("div").querySelector("input");
+
+    const { current: emailErrEl } = emailErr;
+    const emailInput = emailErrEl.closest("div").querySelector("input");
+
+    const { current: telErrEl } = telErr;
+    const telInput = telErrEl.closest("div").querySelector("input");
+
+    if (clear) {
+      nameErrEl.textContent = "";
+      nameInput.classList.remove(styles.red_border);
+
+      emailErrEl.textContent = "";
+      emailInput.classList.remove(styles.red_border);
+
+      telErrEl.textContent = "";
+      telInput.classList.remove(styles.red_border);
+
+      return;
+    }
+
+    if (!name) {
+      nameErrEl.textContent = emptyField;
+      nameInput.classList.add(styles.red_border);
+    }
+
+    if (!email) {
+      emailErrEl.textContent = emptyField;
+      emailInput.classList.add(styles.red_border);
+    }
+
+    if (!tel) {
+      telErrEl.textContent = emptyField;
+      telInput.classList.add(styles.red_border);
+    }
+
+    const reName = /^[a-zA-Z]+(?: [a-zA-Z]+)*$/;
+    const nameTest = reName.test(String(name).trim());
+
+    const reEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const emailTest = reEmail.test(String(email).toLowerCase());
+
+    const reTel =
+      /^\+?[0-9]{1,3}?[-. (]*([0-9]{1,5})[-. )]*([0-9]{1,5})[-. ]*([0-9]{1,6})$/;
+    const telTest = reTel.test(String(tel));
+
+    if (!nameTest) {
+      nameErrEl.textContent = wrongFormat;
+      nameInput.classList.add(styles.red_border);
+    }
+
+    if (!emailTest) {
+      emailErrEl.textContent = wrongFormat;
+      emailInput.classList.add(styles.red_border);
+    }
+
+    if (!telTest) {
+      telErrEl.textContent = wrongFormat;
+      telInput.classList.add(styles.red_border);
+    }
   }
+
+  useImperativeHandle(ref, () => ({ validate }));
+
+  const handleClick = () => validate(true);
 
   return (
     <>
@@ -33,6 +98,7 @@ function PersonalInfo() {
             err={nameErr}
             placeholder="e.g. Stephen King"
             setInput={setName}
+            onClick={handleClick}
           />
           <InputBox
             label="Email Address"
@@ -40,6 +106,7 @@ function PersonalInfo() {
             err={emailErr}
             placeholder="e.g. stephenking@lorem.com"
             setInput={setEmail}
+            onClick={handleClick}
           />
           <InputBox
             label="Phone Number"
@@ -47,11 +114,12 @@ function PersonalInfo() {
             err={telErr}
             placeholder="e.g. +1 234 567 890"
             setInput={setTel}
+            onClick={handleClick}
           />
         </form>
       </section>
     </>
   );
-}
+});
 
 export default PersonalInfo;

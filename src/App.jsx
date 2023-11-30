@@ -6,54 +6,45 @@ import Buttons from "./components/Buttons";
 
 import { assets } from "./store/Assets";
 
+import { useRef } from "react";
+
 function App() {
   const [step, setStep] = useState(1);
 
-  if (step === 1) {
-    return (
-      <>
-        <Steps step={step} />
-        <PersonalInfo />
-        <Buttons step={step} />
-      </>
-    );
-  }
+  const childRef = useRef(null);
 
-  if (step === 2) {
-    return (
-      <>
-        <Steps step={step} />
-        {2}
-        <Buttons step={step} />
-      </>
-    );
-  }
+  const callChildFunction = () => {
+    childRef.current.validate();
+  };
 
-  if (step === 3) {
-    return (
-      <>
-        <Steps step={step} />
-        {3}
-        <Buttons step={step} />
-      </>
-    );
-  }
+  function handleClick({ target }) {
+    const { type } = target.dataset;
 
-  if (step === 4) {
-    return (
-      <>
-        <Steps step={step} />
-        {4}
-        <Buttons step={step} />
-      </>
-    );
+    if (type === "back") {
+      setStep((prev) => (prev > 1 ? prev - 1 : prev));
+      console.log("back");
+    }
+
+    if (type === "next") {
+      //   setStep((prev) => (prev < 4 ? prev + 1 : prev));
+      callChildFunction();
+      console.log("next");
+    }
+
+    if (type === "confirm") {
+      console.log("confirm");
+    }
   }
 
   return (
-    <section>
-      <h1>⛔️ Error</h1>
-      <p>Something went wrong!</p>
-    </section>
+    <>
+      <Steps step={step} />
+      {step === 1 && <PersonalInfo ref={childRef} />}
+      {step === 2 && "2"}
+      {step === 3 && "3"}
+      {step === 4 && "4"}
+      <Buttons step={step} onClick={handleClick} />
+    </>
   );
 }
 
