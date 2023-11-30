@@ -22,14 +22,14 @@ function App() {
 
     if (type === "next" && step === 1) {
       const isValid = callValidate();
-      if (isValid) setStep((prev) => (prev < 4 ? prev + 1 : prev));
+      isValid ? setStep((prev) => (prev < 4 ? prev + 1 : prev)) : "";
     }
 
     if (type === "next" && step > 1) {
       setStep((prev) => (prev < 4 ? prev + 1 : prev));
     }
 
-    if (type === "confirm") {
+    if (type === "confirm" && step === 4) {
       console.log("confirm");
     }
   }

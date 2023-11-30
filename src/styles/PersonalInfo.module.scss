@@ -1,20 +1,26 @@
 .section {
-  background-color: hsla(0, 0%, 100%, 1);
-  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 32px 24px;
-
   max-width: 500px;
   margin: 0 auto;
+  padding: 32px 24px;
+
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 100%, 1);
+  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
 
   @media only screen and (min-width: 768px) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 
+    width: 432px;
+    padding: 40px 16px 0 16px;
+
     max-width: revert;
-    width: 450px;
-    padding: 40px 0 0 0;
     box-shadow: revert;
+    background-color: transparent;
+  }
+
+  @media only screen and (min-width: 805px) {
+    width: 482px;
   }
 }
 
