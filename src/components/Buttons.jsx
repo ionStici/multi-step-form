@@ -1,35 +1,33 @@
 import styles from "./../styles/Buttons.module.scss";
+import Button from "./Button";
 
 function Buttons({ step, onClick }) {
   return (
     <div className={styles.wrapper}>
       <div>
         {step > 1 && (
-          <button
-            className={`${styles.btn} ${styles.back}`}
-            data-type="back"
+          <Button
+            text="Go Back"
             onClick={onClick}
-          >
-            Go Back
-          </button>
+            type="back"
+            classes={styles.back}
+          />
         )}
         {step < 4 && (
-          <button
-            className={`${styles.btn} ${styles.next}`}
-            data-type="next"
+          <Button
+            text="Next Step"
             onClick={onClick}
-          >
-            Next Step
-          </button>
+            type="next"
+            classes={styles.next}
+          />
         )}
         {step === 4 && (
-          <button
-            className={`${styles.btn} ${styles.confirm}`}
-            data-type="confirm"
+          <Button
+            text="Confirm"
             onClick={onClick}
-          >
-            Confirm
-          </button>
+            type="confirm"
+            classes={styles.confirm}
+          />
         )}
       </div>
     </div>

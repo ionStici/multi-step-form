@@ -1,18 +1,14 @@
-import { useState, useRef } from "react";
-
 import PersonalInfo from "./components/step1/PersonalInfo";
 import Steps from "./components/Steps";
 import Buttons from "./components/Buttons";
-
-import { assets } from "./store/Assets";
+import { useState, useRef } from "react";
 
 function App() {
   const [step, setStep] = useState(1);
 
-  const childRef = useRef(null);
-
+  const step1Ref = useRef(null);
   const callValidate = () => {
-    return childRef.current.validate(false);
+    return step1Ref.current.validate(false);
   };
 
   function handleClick({ target }) {
@@ -43,10 +39,7 @@ function App() {
   return (
     <>
       <Steps step={step} />
-      {step === 1 && <PersonalInfo ref={childRef} />}
-      {step === 2 && "2"}
-      {step === 3 && "3"}
-      {step === 4 && "4"}
+      {step === 1 && <PersonalInfo ref={step1Ref} />}
       <Buttons step={step} onClick={handleClick} />
     </>
   );

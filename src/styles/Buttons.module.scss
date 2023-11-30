@@ -10,6 +10,22 @@
   left: 0;
   bottom: 0;
 
+  @media only screen and (min-width: 768px) {
+    position: revert;
+    z-index: revert;
+
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    width: 450px;
+    height: 80px;
+    margin: 0 auto;
+
+    padding: 16px 0;
+    margin-top: auto;
+    box-shadow: none;
+  }
+
   div {
     display: flex;
     align-items: center;
@@ -33,6 +49,14 @@
 
   &:active {
     transform: scale(0.9);
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 123px;
+    font-size: 16px;
+    padding: 14.75px 25.5px;
+    border-radius: 8px;
+    text-wrap: nowrap;
   }
 }
 

@@ -63,17 +63,17 @@ const PersonalInfo = forwardRef((_, ref) => {
       /^\+?[0-9]{1,3}?[-. (]*([0-9]{1,5})[-. )]*([0-9]{1,5})[-. ]*([0-9]{1,6})$/;
     const telTest = reTel.test(String(tel));
 
-    if (!nameTest) {
+    if (!nameTest && name) {
       nameErrEl.textContent = wrongFormat;
       nameInput.classList.add(styles.red_border);
     }
 
-    if (!emailTest) {
+    if (!emailTest && email) {
       emailErrEl.textContent = wrongFormat;
       emailInput.classList.add(styles.red_border);
     }
 
-    if (!telTest) {
+    if (!telTest && tel) {
       telErrEl.textContent = wrongFormat;
       telInput.classList.add(styles.red_border);
     }
