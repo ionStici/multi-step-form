@@ -16,30 +16,6 @@
     padding: 40px 0 0 0;
     box-shadow: revert;
   }
-
-  h1 {
-    color: hsla(213, 96%, 18%, 1);
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 9px;
-
-    @media only screen and (min-width: 768px) {
-      font-size: 32px;
-      margin-bottom: 11px;
-    }
-  }
-
-  .text {
-    color: hsla(231, 11%, 63%, 1);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 25px;
-    margin-bottom: 22px;
-
-    @media only screen and (min-width: 768px) {
-      margin-bottom: 35px;
-    }
-  }
 }
 
 .form {

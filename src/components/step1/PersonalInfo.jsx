@@ -3,6 +3,7 @@ import InputBox from "./InputBox";
 import { useState, useEffect, useRef, useContext } from "react";
 import { useImperativeHandle, forwardRef } from "react";
 import InfoContext from "../../store/InfoContext";
+import Heading from "../Heading";
 
 const PersonalInfo = forwardRef((_, ref) => {
   const [name, setName] = useState("");
@@ -102,10 +103,10 @@ const PersonalInfo = forwardRef((_, ref) => {
   return (
     <>
       <section className={styles.section}>
-        <h1>Personal info</h1>
-        <p className={styles.text}>
-          Please provide your name, email address, and phone number.
-        </p>
+        <Heading
+          h1="Personal info"
+          text="Please provide your name, email address, and phone number."
+        />
 
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <InputBox
