@@ -1,7 +1,8 @@
 import styles from "./../../styles/PersonalInfo.module.scss";
 import InputBox from "./InputBox";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useImperativeHandle, forwardRef } from "react";
+import InfoContext from "../../store/InfoContext";
 
 const PersonalInfo = forwardRef((_, ref) => {
   const [name, setName] = useState("");
@@ -14,6 +15,16 @@ const PersonalInfo = forwardRef((_, ref) => {
 
   const emptyField = "This field is required";
   const wrongFormat = "Wrong format";
+
+  const { info, setInfo } = useContext(InfoContext);
+
+  useEffect(() => {
+    if (info) {
+      setName(info.name);
+      setEmail(info.email);
+      setTel(info.tel);
+    }
+  }, [info]);
 
   function validate(clearStyles) {
     const { current: nameErrEl } = nameErr;
@@ -78,7 +89,10 @@ const PersonalInfo = forwardRef((_, ref) => {
       telInput.classList.add(styles.red_border);
     }
 
-    if (nameTest && emailTest && telTest) return true;
+    if (nameTest && emailTest && telTest) {
+      setInfo({ name, email, tel });
+      return true;
+    }
   }
 
   useImperativeHandle(ref, () => ({ validate }));
@@ -99,6 +113,7 @@ const PersonalInfo = forwardRef((_, ref) => {
             type="name"
             err={nameErr}
             placeholder="e.g. Stephen King"
+            input={name}
             setInput={setName}
             onClick={handleClick}
           />
@@ -107,6 +122,7 @@ const PersonalInfo = forwardRef((_, ref) => {
             type="email"
             err={emailErr}
             placeholder="e.g. stephenking@lorem.com"
+            input={email}
             setInput={setEmail}
             onClick={handleClick}
           />
@@ -115,6 +131,7 @@ const PersonalInfo = forwardRef((_, ref) => {
             type="tel"
             err={telErr}
             placeholder="e.g. +1 234 567 890"
+            input={tel}
             setInput={setTel}
             onClick={handleClick}
           />

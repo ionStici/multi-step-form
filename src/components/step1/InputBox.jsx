@@ -1,6 +1,6 @@
 import styles from "./../../styles/PersonalInfo.module.scss";
 
-function InputBox({ label, type, err, placeholder, setInput, onClick }) {
+function InputBox({ label, type, err, placeholder, input, setInput, onClick }) {
   return (
     <div>
       <label htmlFor={type}>{label}</label>
@@ -8,6 +8,7 @@ function InputBox({ label, type, err, placeholder, setInput, onClick }) {
         type={type === "name" ? "text" : type}
         id={type}
         placeholder={placeholder}
+        value={input}
         onChange={({ target }) => setInput(target.value)}
         onClick={onClick}
       />

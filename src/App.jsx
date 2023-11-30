@@ -7,11 +7,12 @@ function App() {
   const [step, setStep] = useState(1);
 
   const step1Ref = useRef(null);
+
   const callValidate = () => {
     return step1Ref.current.validate(false);
   };
 
-  function handleClick({ target }) {
+  function handleSteps({ target }) {
     const { type } = target.dataset;
 
     if (type === "back") {
@@ -22,12 +23,7 @@ function App() {
     if (type === "next") {
       if (step === 1) {
         const isValid = callValidate();
-
-        if (isValid) {
-          setTimeout(() => {
-            setStep((prev) => (prev < 4 ? prev + 1 : prev));
-          }, 1000);
-        }
+        if (isValid) setStep((prev) => (prev < 4 ? prev + 1 : prev));
       }
     }
 
@@ -40,7 +36,10 @@ function App() {
     <>
       <Steps step={step} />
       {step === 1 && <PersonalInfo ref={step1Ref} />}
-      <Buttons step={step} onClick={handleClick} />
+      {step === 2 && ""}
+      {step === 3 && ""}
+      {step === 4 && ""}
+      <Buttons step={step} onClick={handleSteps} />
     </>
   );
 }
