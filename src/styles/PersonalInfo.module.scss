@@ -11,16 +11,12 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 
-    width: 432px;
-    padding: 40px 16px 0 16px;
+    width: 100%;
+    max-width: 482px;
+    padding: 40px 16px 0 32px;
 
-    max-width: revert;
     box-shadow: revert;
     background-color: transparent;
-  }
-
-  @media only screen and (min-width: 805px) {
-    width: 482px;
   }
 }
 

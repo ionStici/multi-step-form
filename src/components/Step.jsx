@@ -1,6 +1,6 @@
 import styles from "./../styles/Steps.module.scss";
 
-function Step({ step, num, match }) {
+function Step({ step, num, text, match }) {
   return (
     <li>
       <p className={`${styles.num} ${step === num ? styles.active : ""}`}>
@@ -9,7 +9,7 @@ function Step({ step, num, match }) {
       {match && (
         <p>
           <span>Step {num}</span>
-          <span>Your Info</span>
+          <span>{text}</span>
         </p>
       )}
     </li>

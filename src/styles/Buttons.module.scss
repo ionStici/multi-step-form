@@ -16,20 +16,16 @@
     background-color: transparent;
 
     grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
 
-    width: 432px;
-    padding: 16px;
+    max-width: 482px;
+    padding: 16px 16px 16px 32px;
 
     height: 80px;
     margin: 0 auto;
 
     margin-top: auto;
     box-shadow: none;
-
-    @media only screen and (min-width: 805px) {
-      width: 482px;
-    }
   }
 
   div {

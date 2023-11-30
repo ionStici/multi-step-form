@@ -1,6 +1,6 @@
 import styles from "./../../styles/Plan.module.scss";
 import { assets } from "../../store/Assets";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Heading from "../Heading";
 import Box from "./Box";
 import Toggle from "./Toggle";
@@ -30,10 +30,20 @@ const plans = [
   },
 ];
 
-function Plan() {
-  const [monthly, setMonthly] = useState(true);
-  const [activePlan, setActivePlan] = useState("Arcade");
+const Plan = forwardRef((_, ref) => {
+  const [monthly, setMonthly] = useState(null);
+  const [activePlan, setActivePlan] = useState(null);
+
   const { plan, setPlan } = useContext(PlanContext);
+  const { activePlan: selectedPlan, billed } = plan;
+
+  useEffect(() => {
+    if (billed) billed === "Monthly" ? setMonthly(true) : setMonthly(false);
+    if (selectedPlan) setActivePlan(selectedPlan);
+
+    if (!billed) setMonthly(true);
+    if (!selectedPlan) setActivePlan("Arcade");
+  }, []);
 
   function handleActive({ target }) {
     const { plan } = target.dataset;
@@ -42,13 +52,15 @@ function Plan() {
 
   function submitData() {
     const plan = plans.find((plan) => plan.name === activePlan);
-    activePlan;
+
     const billed = monthly ? "Monthly" : "Yearly";
     const price = monthly ? plan.monthly : plan.yearly;
 
     setPlan({ activePlan, billed, price });
-    console.log(plan);
+    return true;
   }
+
+  useImperativeHandle(ref, () => ({ submitData }));
 
   return (
     <>
@@ -58,23 +70,25 @@ function Plan() {
           text="You have the option of monthly or yearly billing."
         />
 
-        {plans.map((plan, i) => {
-          return (
-            <Box
-              key={i}
-              icon={plan.icon}
-              title={plan.name}
-              price={monthly ? `$${plan.monthly}/mo` : `$${plan.yearly}/yr`}
-              active={plan.name === activePlan ? true : false}
-              onClick={handleActive}
-            />
-          );
-        })}
+        <div className={styles.box_wrapper}>
+          {plans.map((plan, i) => {
+            return (
+              <Box
+                key={i}
+                icon={plan.icon}
+                title={plan.name}
+                price={monthly ? `$${plan.monthly}/mo` : `$${plan.yearly}/yr`}
+                active={plan.name === activePlan ? true : false}
+                onClick={handleActive}
+              />
+            );
+          })}
+        </div>
 
         <Toggle monthly={monthly} setMonthly={setMonthly} />
       </section>
     </>
   );
-}
+});
 
 export default Plan;

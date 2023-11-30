@@ -13,6 +13,7 @@ function Steps({ step }) {
   const bgImg = { backgroundImage: `url(${match ? bgDesktop : bgMobile})` };
 
   const nums = [1, 2, 3, 4];
+  const text = ["Your Info", "Select Plan", "Add-Ons", "Summary"];
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -24,8 +25,8 @@ function Steps({ step }) {
   return (
     <div className={styles.wrapper} style={bgImg}>
       <ul>
-        {nums.map((num) => (
-          <Step key={num} step={step} num={num} match={match} />
+        {nums.map((num, i) => (
+          <Step key={num} step={step} num={num} text={text[i]} match={match} />
         ))}
       </ul>
     </div>
