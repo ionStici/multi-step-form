@@ -1,20 +1,32 @@
 import styles from "./../styles/Steps.module.scss";
+import Step from "./Step";
 import { assets } from "../store/Assets";
+import { useState, useEffect } from "react";
 
 function Steps({ step }) {
-  //   console.log(assets.bgSidebarMobile);
-  //   console.log(assets.bgSidebarDesktop);
+  const { bgSidebarDesktop: bgDesktop, bgSidebarMobile: bgMobile } = assets;
+
+  const [match, setMatch] = useState(
+    window.matchMedia("(min-width: 768px)").matches
+  );
+
+  const bgImg = { backgroundImage: `url(${match ? bgDesktop : bgMobile})` };
+
+  const nums = [1, 2, 3, 4];
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleMediaChange = (e) => setMatch(e.matches);
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
 
   return (
-    <div
-      className={styles.wrapper}
-      style={{ backgroundImage: `url(${assets.bgSidebarMobile})` }}
-    >
+    <div className={styles.wrapper} style={bgImg}>
       <ul>
-        <li className={step === 1 ? styles.active : ""}>1</li>
-        <li className={step === 2 ? styles.active : ""}>2</li>
-        <li className={step === 3 ? styles.active : ""}>3</li>
-        <li className={step === 4 ? styles.active : ""}>4</li>
+        {nums.map((num) => (
+          <Step key={num} step={step} num={num} match={match} />
+        ))}
       </ul>
     </div>
   );

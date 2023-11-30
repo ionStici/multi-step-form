@@ -3,7 +3,7 @@ import InputBox from "./InputBox";
 import { useState, useRef } from "react";
 import { useImperativeHandle, forwardRef } from "react";
 
-const PersonalInfo = forwardRef((props, ref) => {
+const PersonalInfo = forwardRef((_, ref) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
@@ -15,7 +15,7 @@ const PersonalInfo = forwardRef((props, ref) => {
   const emptyField = "This field is required";
   const wrongFormat = "Wrong format";
 
-  function validate(clear) {
+  function validate(clearStyles) {
     const { current: nameErrEl } = nameErr;
     const nameInput = nameErrEl.closest("div").querySelector("input");
 
@@ -25,7 +25,7 @@ const PersonalInfo = forwardRef((props, ref) => {
     const { current: telErrEl } = telErr;
     const telInput = telErrEl.closest("div").querySelector("input");
 
-    if (clear) {
+    if (clearStyles) {
       nameErrEl.textContent = "";
       nameInput.classList.remove(styles.red_border);
 
@@ -77,6 +77,8 @@ const PersonalInfo = forwardRef((props, ref) => {
       telErrEl.textContent = wrongFormat;
       telInput.classList.add(styles.red_border);
     }
+
+    if (nameTest && emailTest && telTest) return true;
   }
 
   useImperativeHandle(ref, () => ({ validate }));
