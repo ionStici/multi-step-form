@@ -1,9 +1,11 @@
 import styles from "./../../styles/Plan.module.scss";
 import { assets } from "../../store/Assets";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Heading from "../Heading";
 import Box from "./Box";
 import Toggle from "./Toggle";
+import PlanContext from "../../store/PlanContext";
+import { useImperativeHandle, forwardRef } from "react";
 
 const { iconArcade, iconAdvanced, iconPro } = assets;
 
@@ -31,6 +33,7 @@ const plans = [
 function Plan() {
   const [monthly, setMonthly] = useState(true);
   const [activePlan, setActivePlan] = useState("Arcade");
+  const { plan, setPlan } = useContext(PlanContext);
 
   function handleActive({ target }) {
     const { plan } = target.dataset;
@@ -42,6 +45,9 @@ function Plan() {
     activePlan;
     const billed = monthly ? "Monthly" : "Yearly";
     const price = monthly ? plan.monthly : plan.yearly;
+
+    setPlan({ activePlan, billed, price });
+    console.log(plan);
   }
 
   return (
@@ -65,7 +71,7 @@ function Plan() {
           );
         })}
 
-        <Toggle setMonthly={setMonthly} />
+        <Toggle monthly={monthly} setMonthly={setMonthly} />
       </section>
     </>
   );

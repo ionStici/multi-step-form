@@ -69,7 +69,7 @@
   }
 }
 
-.active {
+.btn_box.active {
   background-color: hsla(231, 100%, 99%, 1) !important;
   border: 1px solid hsla(243, 100%, 62%, 1) !important;
 }
@@ -77,15 +77,54 @@
 // // // // //
 
 .toggleWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: hsla(231, 100%, 99%, 1);
+  border-radius: 8px;
+  height: 48px;
   margin-top: 24px;
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 24px;
+
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
   }
 
   p {
+    color: hsla(231, 11%, 63%, 1);
+    font-size: 14px;
+    font-weight: 500;
+
+    &.active {
+      color: hsla(213, 96%, 18%, 1);
+    }
   }
 
   div {
+    width: 38px;
+    height: 20px;
+    background-color: hsla(213, 96%, 18%, 1);
+    border-radius: 50px;
+    padding: 4px;
+    display: flex;
+
+    div {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: hsla(0, 0%, 100%, 1);
+      transition: transform 0.2s;
+
+      &.active {
+        transform: translateX(18px);
+      }
+    }
   }
 }
 
