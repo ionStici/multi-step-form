@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import PersonalInfo from "./components/personalInfo";
+import PersonalInfo from "./components/step1/PersonalInfo";
 import Steps from "./components/Steps";
 import Buttons from "./components/Buttons";
 
@@ -20,15 +20,33 @@ function App() {
   }
 
   if (step === 2) {
-    return <p>2</p>;
+    return (
+      <>
+        <Steps step={step} />
+        {2}
+        <Buttons step={step} />
+      </>
+    );
   }
 
   if (step === 3) {
-    return <p>3</p>;
+    return (
+      <>
+        <Steps step={step} />
+        {3}
+        <Buttons step={step} />
+      </>
+    );
   }
 
   if (step === 4) {
-    return <p>4</p>;
+    return (
+      <>
+        <Steps step={step} />
+        {4}
+        <Buttons step={step} />
+      </>
+    );
   }
 
   return (
