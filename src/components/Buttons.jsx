@@ -5,9 +5,17 @@ function Buttons({ step, onClick }) {
   return (
     <div className={styles.wrapper}>
       <div>
-        {step > 1 && (
+        {step > 1 && step < 5 && (
           <Button
             text="Go Back"
+            onClick={onClick}
+            type="back"
+            classes={styles.back}
+          />
+        )}
+        {step === 6 && (
+          <Button
+            text="Step 1"
             onClick={onClick}
             type="back"
             classes={styles.back}
@@ -24,6 +32,14 @@ function Buttons({ step, onClick }) {
         {step === 4 && (
           <Button
             text="Confirm"
+            onClick={onClick}
+            type="confirm"
+            classes={styles.confirm}
+          />
+        )}
+        {step === 5 && (
+          <Button
+            text="See Data"
             onClick={onClick}
             type="confirm"
             classes={styles.confirm}
