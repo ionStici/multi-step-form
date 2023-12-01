@@ -4,6 +4,7 @@ import AddOns from "./components/step3/AddOns";
 import Summary from "./components/step4/Summary";
 import Steps from "./components/Steps";
 import Buttons from "./components/Buttons";
+import Message from "./components/Message";
 import { useState, useRef } from "react";
 
 function App() {
@@ -36,21 +37,21 @@ function App() {
 
     if (type === "next" && step === 1) {
       const isValid = callValidate();
-      isValid ? setStep((prev) => (prev < 4 ? prev + 1 : prev)) : "";
+      isValid ? setStep(2) : "";
     }
 
     if (type === "next" && step === 2) {
       const isValid = callSubmitData();
-      isValid ? setStep((prev) => (prev < 4 ? prev + 1 : prev)) : "";
+      isValid ? setStep(3) : "";
     }
 
     if (type === "next" && step === 3) {
       callHandleAddons();
-      setStep((prev) => (prev < 4 ? prev + 1 : prev));
+      setStep(4);
     }
 
     if (type === "confirm" && step === 4) {
-      console.log("confirm");
+      setStep(5);
     }
   }
 
@@ -65,6 +66,7 @@ function App() {
       {step === 2 && <Plan ref={step2Ref} />}
       {step === 3 && <AddOns ref={step3Ref} />}
       {step === 4 && <Summary goToStep2={goToStep2} />}
+      {step === 5 && <Message />}
       <Buttons step={step} onClick={handleSteps} />
     </>
   );
