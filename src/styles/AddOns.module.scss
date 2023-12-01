@@ -1,0 +1,124 @@
+.section {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 32px 24px;
+
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 100%, 1);
+  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
+
+  @media only screen and (min-width: 768px) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    width: 100%;
+    max-width: 482px;
+    padding: 40px 16px 0 32px;
+
+    box-shadow: revert;
+    background-color: transparent;
+  }
+}
+
+.btn_box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  padding: 10px 16px 13px 16px;
+  margin-bottom: 12px;
+
+  border: 1px solid hsla(229, 24%, 87%, 1);
+  background-color: transparent;
+  border-radius: 8px;
+
+  transition: all 0.2s;
+  cursor: pointer;
+
+  @media only screen and (min-width: 768px) {
+    padding: 18px 24px;
+    margin-bottom: 16px;
+  }
+
+  &:hover {
+    border: 1px solid hsla(243, 100%, 62%, 1);
+  }
+
+  &.active {
+    background-color: hsla(231, 100%, 99%, 1);
+    border: 1px solid hsla(243, 100%, 62%, 1);
+  }
+
+  .img_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    border-radius: 4px;
+
+    background-color: transparent;
+    border: 1px solid hsla(229, 24%, 87%, 1);
+    transition: all 0.2s;
+    pointer-events: none;
+
+    @media only screen and (min-width: 768px) {
+      margin-right: 24px;
+    }
+
+    &.active {
+      background-color: hsla(243, 100%, 62%, 1);
+      border: 1px solid hsla(243, 100%, 62%, 1);
+    }
+  }
+
+  img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .text_wrapper {
+    pointer-events: none;
+    padding-right: 6px;
+    text-align: left;
+
+    p:first-child {
+      color: hsla(213, 96%, 18%, 1);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 3px;
+
+      @media only screen and (min-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 7px;
+      }
+    }
+
+    p:last-child {
+      color: hsla(231, 11%, 63%, 1);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+
+      @media only screen and (min-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .price {
+    color: hsla(243, 100%, 62%, 1);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    pointer-events: none;
+    margin-left: auto;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 14px;
+    }
+  }
+}
