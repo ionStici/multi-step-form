@@ -5,10 +5,11 @@ import Summary from "./components/step4/Summary";
 import Steps from "./components/Steps";
 import Buttons from "./components/Buttons";
 import Message from "./components/Message";
+import ViewData from "./components/ViewData";
 import { useState, useRef } from "react";
 
 function App() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
 
   const step1Ref = useRef(null);
   const step2Ref = useRef(null);
@@ -59,6 +60,14 @@ function App() {
     setStep(2);
   }
 
+  function goToStep6() {
+    setStep(6);
+  }
+
+  function goToStep1() {
+    setStep(1);
+  }
+
   return (
     <>
       <Steps step={step} />
@@ -66,8 +75,9 @@ function App() {
       {step === 2 && <Plan ref={step2Ref} />}
       {step === 3 && <AddOns ref={step3Ref} />}
       {step === 4 && <Summary goToStep2={goToStep2} />}
-      {step === 5 && <Message />}
-      <Buttons step={step} onClick={handleSteps} />
+      {step === 5 && <Message goToStep6={goToStep6} />}
+      {step === 6 && <ViewData goToStep1={goToStep1} />}
+      {step < 5 && <Buttons step={step} onClick={handleSteps} />}
     </>
   );
 }
