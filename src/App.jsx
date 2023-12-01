@@ -7,7 +7,7 @@ import Buttons from "./components/Buttons";
 import { useState, useRef } from "react";
 
 function App() {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(2);
 
   const step1Ref = useRef(null);
   const step2Ref = useRef(null);
@@ -54,13 +54,17 @@ function App() {
     }
   }
 
+  function goToStep2() {
+    setStep(2);
+  }
+
   return (
     <>
       <Steps step={step} />
       {step === 1 && <PersonalInfo ref={step1Ref} />}
       {step === 2 && <Plan ref={step2Ref} />}
       {step === 3 && <AddOns ref={step3Ref} />}
-      {step === 4 && <Summary />}
+      {step === 4 && <Summary goToStep2={goToStep2} />}
       <Buttons step={step} onClick={handleSteps} />
     </>
   );
