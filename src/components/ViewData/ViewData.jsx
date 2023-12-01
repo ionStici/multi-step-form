@@ -1,3 +1,4 @@
+import btnStyles from "./../../styles/Buttons.module.scss";
 import styles from "./../../styles/ViewData.module.scss";
 import { useContext } from "react";
 import InfoContext from "../../store/InfoContext";
@@ -9,15 +10,9 @@ import Plan from "./Plan";
 import Addons from "./Addons";
 
 function ViewData() {
-  const { info, setInfo } = useContext(InfoContext);
-  const { plan, setPlan } = useContext(PlanContext);
-  const { addOns, setAddons } = useContext(AddonsContext);
-
-  function clearData() {
-    setInfo("");
-    setPlan("");
-    setAddons("");
-  }
+  const { info, _ } = useContext(InfoContext);
+  const { plan, __ } = useContext(PlanContext);
+  const { addOns, ___ } = useContext(AddonsContext);
 
   if (!info) {
     return (
@@ -34,16 +29,18 @@ function ViewData() {
     <section className={styles.section}>
       <Heading h1="Your data" text="Check your input below." />
 
-      <Info info={info} />
-      <Plan plan={plan} />
+      <div className={styles.wrapper}>
+        <Info info={info} />
+        <Plan plan={plan} />
+      </div>
 
-      <ul>
-        {addOns.map((addon, i) => {
-          return <Addons key={i} addon={addon} plan={plan} />;
-        })}
-      </ul>
-
-      <button onClick={clearData}>Clear Data</button>
+      {addOns && (
+        <ul className={styles.addons_ul}>
+          {addOns.map((addon, i) => {
+            return <Addons key={i} addon={addon} plan={plan} />;
+          })}
+        </ul>
+      )}
     </section>
   );
 }

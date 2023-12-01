@@ -1,6 +1,8 @@
+import styles from "./../../styles/ViewData.module.scss";
+
 function Info({ info }) {
   return (
-    <ul>
+    <ul className={styles.info_ul}>
       <li>
         <p>Name: </p>
         <p>{info.name}</p>

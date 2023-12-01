@@ -45,6 +45,14 @@ function Buttons({ step, onClick }) {
             classes={styles.confirm}
           />
         )}
+        {step === 6 && (
+          <Button
+            text="Clear Data"
+            onClick={onClick}
+            type="confirm"
+            classes={styles.confirm}
+          />
+        )}
       </div>
     </div>
   );

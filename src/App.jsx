@@ -6,7 +6,10 @@ import Steps from "./components/Steps";
 import Buttons from "./components/Buttons";
 import Message from "./components/Message";
 import ViewData from "./components/ViewData/ViewData";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import InfoContext from "./store/InfoContext";
+import PlanContext from "./store/PlanContext";
+import AddonsContext from "./store/AddonsContext";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -14,6 +17,10 @@ function App() {
   const step1Ref = useRef(null);
   const step2Ref = useRef(null);
   const step3Ref = useRef(null);
+
+  const { info, setInfo } = useContext(InfoContext);
+  const { _, setPlan } = useContext(PlanContext);
+  const { __, setAddons } = useContext(AddonsContext);
 
   const callValidate = () => {
     return step1Ref.current.validate(false);
@@ -61,6 +68,12 @@ function App() {
 
     if (type === "confirm" && step === 5) {
       setStep(6);
+    }
+
+    if (type === "confirm" && step === 6) {
+      setInfo("");
+      setPlan("");
+      setAddons("");
     }
   }
 

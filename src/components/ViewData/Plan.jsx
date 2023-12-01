@@ -1,6 +1,8 @@
+import styles from "./../../styles/ViewData.module.scss";
+
 function Plan({ plan }) {
   return (
-    <ul>
+    <ul className={styles.plan_ul}>
       <li>
         <p>Plan: </p>
         <p>
@@ -8,7 +10,7 @@ function Plan({ plan }) {
         </p>
       </li>
       <li>
-        <p>Plan price: </p>
+        <p>Price: </p>
         <p>
           ${plan.price}/{plan.billed === "Monthly" ? "mo" : "yr"}
         </p>
