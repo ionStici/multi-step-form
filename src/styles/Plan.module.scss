@@ -142,7 +142,7 @@
       border-radius: 50%;
       background-color: hsla(0, 0%, 100%, 1);
       transform: translateX(0);
-      transition: transform 0.2s;
+      //   transition: transform 0.2s;
 
       &.active {
         transform: translateX(18px);
