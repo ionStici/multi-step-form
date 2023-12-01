@@ -23,8 +23,8 @@ function Summary({ goToStep2 }) {
         text="Double-check everything looks OK before confirming."
       />
 
-      <div>
-        <div>
+      <div className={styles.summary_wrapper}>
+        <div className={styles.plan_wrapper}>
           <div>
             <h2>
               {activePlan} ({billed})
@@ -36,20 +36,22 @@ function Summary({ goToStep2 }) {
           </p>
         </div>
 
-        {addOns.map((addOn, i) => {
-          return (
-            <div key={i}>
-              <p>{addOn.name}</p>
-              <p>
-                +${billed === "Monthly" ? addOn.monthly : addOn.yearly}/
-                {billed === "Monthly" ? "mo" : "yr"}
-              </p>
-            </div>
-          );
-        })}
+        <div className={styles.addons_wrapper}>
+          {addOns.map((addOn, i) => {
+            return (
+              <div key={i}>
+                <p>{addOn.name}</p>
+                <p>
+                  +${billed === "Monthly" ? addOn.monthly : addOn.yearly}/
+                  {billed === "Monthly" ? "mo" : "yr"}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      <div>
+      <div className={styles.total_wrapper}>
         <p>Total (per {billed === "Monthly" ? "month" : "year"})</p>
         <p>
           ${sum}/{billed === "Monthly" ? "mo" : "yr"}
