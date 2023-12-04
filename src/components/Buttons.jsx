@@ -1,7 +1,7 @@
 import styles from "./../styles/Buttons.module.scss";
 import Button from "./Button";
 
-function Buttons({ step, onClick }) {
+function Buttons({ step, isInfo, onClick }) {
   return (
     <div className={styles.wrapper}>
       <div>
@@ -45,7 +45,7 @@ function Buttons({ step, onClick }) {
             classes={styles.confirm}
           />
         )}
-        {step === 6 && (
+        {step === 6 && isInfo && (
           <Button
             text="Clear Data"
             onClick={onClick}

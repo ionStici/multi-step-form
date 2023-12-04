@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import Layout from "./components/Layout.jsx";
 import { InfoContextProvider } from "./store/InfoContext.jsx";
 import { PlanContextProvider } from "./store/PlanContext.jsx";
 import { AddonsContextProvider } from "./store/AddonsContext.jsx";
@@ -12,9 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <InfoContextProvider>
       <PlanContextProvider>
         <AddonsContextProvider>
-          <Layout>
-            <App />
-          </Layout>
+          <App />
         </AddonsContextProvider>
       </PlanContextProvider>
     </InfoContextProvider>

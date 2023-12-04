@@ -19,8 +19,9 @@ function App() {
   const step3Ref = useRef(null);
 
   const { info, setInfo } = useContext(InfoContext);
-  const { _, setPlan } = useContext(PlanContext);
-  const { __, setAddons } = useContext(AddonsContext);
+  const { __, setPlan } = useContext(PlanContext);
+  const { ___, setAddons } = useContext(AddonsContext);
+  const isInfo = Boolean(info);
 
   const callValidate = () => {
     return step1Ref.current.validate(false);
@@ -82,16 +83,18 @@ function App() {
   }
 
   return (
-    <>
-      <Steps step={step} />
-      {step === 1 && <PersonalInfo ref={step1Ref} />}
-      {step === 2 && <Plan ref={step2Ref} />}
-      {step === 3 && <AddOns ref={step3Ref} />}
-      {step === 4 && <Summary goToStep2={goToStep2} />}
-      {step === 5 && <Message />}
-      {step === 6 && <ViewData />}
-      <Buttons step={step} onClick={handleSteps} />
-    </>
+    <main>
+      <div className="wrapper">
+        <Steps step={step} />
+        {step === 1 && <PersonalInfo ref={step1Ref} />}
+        {step === 2 && <Plan ref={step2Ref} />}
+        {step === 3 && <AddOns ref={step3Ref} />}
+        {step === 4 && <Summary goToStep2={goToStep2} />}
+        {step === 5 && <Message />}
+        {step === 6 && <ViewData />}
+        <Buttons step={step} isInfo={isInfo} onClick={handleSteps} />
+      </div>
+    </main>
   );
 }
 
