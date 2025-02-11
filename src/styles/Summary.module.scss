@@ -79,6 +79,10 @@
 
 .addons_wrapper {
   div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     &:first-child {
       border-top: 1px solid hsla(231, 11%, 63%, 0.2);
       margin-top: 12px;
@@ -89,10 +93,6 @@
         padding-top: 24px;
       }
     }
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     &:not(:last-child) {
       margin-bottom: 12px;
