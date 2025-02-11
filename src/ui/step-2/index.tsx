@@ -1,5 +1,5 @@
 import styles from "@/styles/plan.module.scss";
-import { assets } from "@/data/assets";
+import { plans } from "@/data/data";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { Heading } from "../components/heading";
 import { useFormData } from "@/contexts/use-form-data";
@@ -51,11 +51,3 @@ export const Plan = forwardRef((_, ref) => {
     </section>
   );
 });
-
-const { iconArcade, iconAdvanced, iconPro } = assets;
-
-const plans = [
-  { name: "Arcade", monthly: "9", yearly: "90", icon: iconArcade },
-  { name: "Advanced", monthly: "12", yearly: "120", icon: iconAdvanced },
-  { name: "Pro", monthly: "15", yearly: "150", icon: iconPro },
-];

@@ -25,7 +25,7 @@ export function FormProvider({ children }: { children: ReactNode }) {
 
   const [addOns, setAddons] = useState<AddOnsSchema>(() => {
     const savedAddOns = localStorage.getItem("formAddOns");
-    return savedAddOns ? JSON.parse(savedAddOns) : [true, true, false];
+    return savedAddOns ? JSON.parse(savedAddOns) : [];
   });
 
   const updateStep: Dispatch<SetStateAction<number>> = (value) => {
@@ -63,7 +63,7 @@ export function FormProvider({ children }: { children: ReactNode }) {
   const cleanup = () => {
     setInfo({ name: "", email: "", tel: "" });
     setPlan({ activePlan: "", billed: "", price: "" });
-    setAddons([true, true, false]);
+    setAddons([]);
     localStorage.removeItem("formInfo");
     localStorage.removeItem("formPlan");
     localStorage.removeItem("formAddOns");

@@ -1,12 +1,12 @@
 import { Provider } from "./provider";
-import { Steps } from "./ui/components/steps";
 import { StepsAside } from "./ui/components/steps-aside";
+import { StepsMain } from "./ui/components/steps-main";
 
 export function App() {
   return (
     <Provider>
       <StepsAside />
-      <Steps />
+      <StepsMain />
     </Provider>
   );
 }

@@ -1,10 +1,14 @@
 import { useFormData } from "@/contexts/use-form-data";
 import { useRef } from "react";
 import { PersonalInfo } from "../step-1";
-import { Buttons } from "./buttons";
 import { Plan } from "../step-2";
+import { Buttons } from "./buttons";
+import { AddOns } from "../step-3";
+import { Summary } from "../step-4";
+import { Message } from "./message";
+import { ViewData } from "../view-data";
 
-export function Steps() {
+export function StepsMain() {
   const { step, setStep, cleanup } = useFormData();
 
   const step1Ref = useRef<{ validate: (flag: boolean) => void }>(null);
@@ -26,7 +30,6 @@ export function Steps() {
 
     if (type === "next" && step === 1) {
       const isValid = callValidate();
-      console.log(isValid);
       if (isValid) setStep(2);
     }
 
@@ -46,10 +49,14 @@ export function Steps() {
   }
 
   return (
-    <div>
+    <>
       {step === 1 && <PersonalInfo ref={step1Ref} />}
       {step === 2 && <Plan ref={step2Ref} />}
+      {step === 3 && <AddOns ref={step3Ref} />}
+      {step === 4 && <Summary />}
+      {step === 5 && <Message />}
+      {step === 6 && <ViewData />}
       <Buttons onClick={handleSteps} />
-    </div>
+    </>
   );
 }
