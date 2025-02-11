@@ -5,6 +5,7 @@ import { Heading } from "../components/heading";
 import { useFormData } from "@/contexts/use-form-data";
 import { Toggle } from "./toggle";
 import { PlanBox } from "./plan-box";
+import { Animate } from "../components/animate";
 
 export const Plan = forwardRef((_, ref) => {
   const { plan, setPlan } = useFormData();
@@ -32,22 +33,24 @@ export const Plan = forwardRef((_, ref) => {
 
   return (
     <section className={styles.section}>
-      <Heading h1="Select your plan" text="You have the option of monthly or yearly billing." />
-      <div className={styles.box_wrapper}>
-        {plans.map((plan, i) => {
-          return (
-            <PlanBox
-              key={i}
-              icon={plan.icon}
-              title={plan.name}
-              price={monthly ? `$${plan.monthly}/mo` : `$${plan.yearly}/yr`}
-              active={plan.name === activePlan ? true : false}
-              onClick={() => handleActive(plan.name)}
-            />
-          );
-        })}
-      </div>
-      <Toggle monthly={monthly} setMonthly={setMonthly} />
+      <Animate>
+        <Heading h1="Select your plan" text="You have the option of monthly or yearly billing." />
+        <div className={styles.box_wrapper}>
+          {plans.map((plan, i) => {
+            return (
+              <PlanBox
+                key={i}
+                icon={plan.icon}
+                title={plan.name}
+                price={monthly ? `$${plan.monthly}/mo` : `$${plan.yearly}/yr`}
+                active={plan.name === activePlan ? true : false}
+                onClick={() => handleActive(plan.name)}
+              />
+            );
+          })}
+        </div>
+        <Toggle monthly={monthly} setMonthly={setMonthly} />
+      </Animate>
     </section>
   );
 });

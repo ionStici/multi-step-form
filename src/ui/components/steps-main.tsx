@@ -2,11 +2,11 @@ import { useFormData } from "@/contexts/use-form-data";
 import { useRef } from "react";
 import { PersonalInfo } from "../step-1";
 import { Plan } from "../step-2";
-import { Buttons } from "./buttons";
 import { AddOns } from "../step-3";
 import { Summary } from "../step-4";
-import { Message } from "./message";
 import { ViewData } from "../view-data";
+import { Buttons } from "./buttons";
+import { Message } from "./message";
 
 export function StepsMain() {
   const { step, setStep, cleanup } = useFormData();

@@ -4,6 +4,7 @@ import { Heading } from "../components/heading";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { useFormData } from "@/contexts/use-form-data";
 import { AddOnsBox } from "./add-ons-box";
+import { Animate } from "../components/animate";
 
 export const AddOns = forwardRef((_, ref) => {
   const { plan, addOns, setAddons } = useFormData();
@@ -32,21 +33,23 @@ export const AddOns = forwardRef((_, ref) => {
 
   return (
     <section className={styles.section}>
-      <Heading h1="Pick add-ons" text="Add-ons help enhance your gaming experience." />
+      <Animate>
+        <Heading h1="Pick add-ons" text="Add-ons help enhance your gaming experience." />
 
-      {addons.map(({ name, about, monthly, yearly }, i) => {
-        return (
-          <AddOnsBox
-            key={i}
-            active={active[i]}
-            name={name}
-            about={about}
-            billed={billed}
-            price={billed === "Monthly" ? monthly : yearly}
-            onClick={handleActive}
-          />
-        );
-      })}
+        {addons.map(({ name, about, monthly, yearly }, i) => {
+          return (
+            <AddOnsBox
+              key={i}
+              active={active[i]}
+              name={name}
+              about={about}
+              billed={billed}
+              price={billed === "Monthly" ? monthly : yearly}
+              onClick={handleActive}
+            />
+          );
+        })}
+      </Animate>
     </section>
   );
 });

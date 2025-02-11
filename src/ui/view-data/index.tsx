@@ -4,6 +4,7 @@ import { Heading } from "../components/heading";
 import { Info } from "./info";
 import { Plan } from "./plan";
 import { Addons } from "./addons";
+import { Animate } from "../components/animate";
 
 export function ViewData() {
   const { info, addOns, plan } = useFormData();
@@ -11,27 +12,31 @@ export function ViewData() {
   if (!info.name) {
     return (
       <section className={styles.section}>
-        <Heading h1="Input cleared" text="Try again by clicking the button below 👋" />
+        <Animate>
+          <Heading h1="Input cleared" text="Try again by clicking the button below 👋" />
+        </Animate>
       </section>
     );
   }
 
   return (
     <section className={styles.section}>
-      <Heading h1="Your data" text="Check your input below." />
+      <Animate>
+        <Heading h1="Your data" text="Check your input below." />
 
-      <div className={styles.wrapper}>
-        <Info />
-        <Plan />
-      </div>
+        <div className={styles.wrapper}>
+          <Info />
+          <Plan />
+        </div>
 
-      {addOns && (
-        <ul className={styles.addons_ul}>
-          {addOns.map((addon, i) => {
-            return <Addons key={i} addon={addon} plan={plan} />;
-          })}
-        </ul>
-      )}
+        {addOns && (
+          <ul className={styles.addons_ul}>
+            {addOns.map((addon, i) => {
+              return <Addons key={i} addon={addon} plan={plan} />;
+            })}
+          </ul>
+        )}
+      </Animate>
     </section>
   );
 }

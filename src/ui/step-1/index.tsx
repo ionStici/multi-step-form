@@ -3,6 +3,7 @@ import styles from "@/styles/personal-info.module.scss";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Heading } from "../components/heading";
 import { Input } from "./input";
+import { Animate } from "../components/animate";
 
 const emptyField = "This field is required";
 const wrongFormat = "Wrong format";
@@ -94,39 +95,41 @@ export const PersonalInfo = forwardRef((_, ref) => {
 
   return (
     <section className={styles.section}>
-      <Heading
-        h1="Personal info"
-        text="Please provide your name, email address, and phone number."
-      />
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-        <Input
-          label="Name"
-          placeholder="e.g. Stephen King"
-          type="text"
-          input={name}
-          setInput={setName}
-          err={nameErr}
-          onClick={handleClick}
+      <Animate>
+        <Heading
+          h1="Personal info"
+          text="Please provide your name, email address, and phone number."
         />
-        <Input
-          label="Email Address"
-          placeholder="e.g. stephenking@lorem.com"
-          type="email"
-          input={email}
-          setInput={setEmail}
-          err={emailErr}
-          onClick={handleClick}
-        />
-        <Input
-          label="Phone Number"
-          placeholder="e.g. +1 234 567 890"
-          type="tel"
-          input={tel}
-          setInput={setTel}
-          err={telErr}
-          onClick={handleClick}
-        />
-      </form>
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+          <Input
+            label="Name"
+            placeholder="e.g. Stephen King"
+            type="text"
+            input={name}
+            setInput={setName}
+            err={nameErr}
+            onClick={handleClick}
+          />
+          <Input
+            label="Email Address"
+            placeholder="e.g. stephenking@lorem.com"
+            type="email"
+            input={email}
+            setInput={setEmail}
+            err={emailErr}
+            onClick={handleClick}
+          />
+          <Input
+            label="Phone Number"
+            placeholder="e.g. +1 234 567 890"
+            type="tel"
+            input={tel}
+            setInput={setTel}
+            err={telErr}
+            onClick={handleClick}
+          />
+        </form>
+      </Animate>
     </section>
   );
 });
