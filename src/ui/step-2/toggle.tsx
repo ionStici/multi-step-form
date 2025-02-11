@@ -1,7 +1,13 @@
-import styles from "./../../styles/Plan.module.scss";
+import styles from "@/styles/plan.module.scss";
+import { Dispatch, SetStateAction } from "react";
 
-function Toggle({ monthly, setMonthly }) {
-  const handleToggle = () => setMonthly((prev) => !prev);
+type ToggleProps = {
+  monthly: boolean;
+  setMonthly: Dispatch<SetStateAction<boolean>>;
+};
+
+export function Toggle({ monthly, setMonthly }: ToggleProps) {
+  const handleToggle = () => setMonthly((p) => !p);
 
   return (
     <div className={styles.toggleWrapper}>
@@ -15,5 +21,3 @@ function Toggle({ monthly, setMonthly }) {
     </div>
   );
 }
-
-export default Toggle;
